@@ -2,7 +2,7 @@
 
 ### To Run:
 
-Clone the repo, cd into the root directory, and run `npm build`
+Clone the repo, cd into the root directory, and run `npm install`
 
 then
 
@@ -10,7 +10,7 @@ then
 
 finally
 
-`npm start` or just `open index.html`
+`npm start` (will be on port 8080) or just `open index.html`
 
 
 ## Top Level Description
