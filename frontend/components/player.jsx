@@ -113,6 +113,15 @@ export default class Player extends React.component  {
                 <div className="albumContainer">
 
                 </div>
+                <Controls 
+                    trackName={this.state.trackName}
+                    artist={this.state.artist}
+                    duration={this.state.duration}
+                    progress={this.state.progress}
+                    playPause={this.playPause} 
+                    playing={this.state.playing}
+                    flip={this.flip}
+                />
             </div>
         );
     }
