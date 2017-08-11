@@ -47,3 +47,7 @@ The progress bar works by taking the current time of the clip / total time and c
 Transitions, box-shadows, hover effects, and cross blurs were added to make it feel more natural.
 
 
+### Testing
+
+I really wanted to write unit tests, but writing them with Jest/Enzyme for React is rather time consuming, and I didn't want to go well over 3 hours. 
+
