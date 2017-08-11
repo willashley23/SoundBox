@@ -30,10 +30,107 @@ body {
 
             width: 100%;
             position: absolute;
-            transition: opacity 600ms ease;
+            transition: opacity 500ms ease;
 
             &.hidden {
                 opacity: 0;
+            }
+        }
+    }
+}
+
+.controlsContainer {
+    
+    .flex-row;
+    width: 100%;
+    min-height: 12vh;
+    max-width: 500px;
+    margin: 0 auto;
+    justify-content: space-between;
+    background-color: white;
+    overflow: hidden;
+
+    .playerControls {
+        
+        .flex-row;
+        margin-left: 25px;
+        margin-right: 15px;
+        
+        .previous {
+            .icon('../images/prev.svg');
+        }
+
+        .playPause {
+            
+            &.playing {
+                .icon('../images/pause.svg');
+            }
+
+            &.paused {
+                .icon('../images/play.svg');
+            }
+        }
+
+        .next {
+            .icon('../images/next.svg');
+        }
+    }
+}
+
+.playerInfo {
+
+    flex-grow: 2;
+    margin-right: 25px;
+
+    .artistInfo {
+
+        .flex-row;
+        margin-bottom: 10px;
+        justify-content: initial;
+
+        span  {
+            font-size: 14px;
+            font-family: sans-serif;
+            cursor: default;
+        }
+
+        .artistName span {
+            color: #395062;
+            margin-right: 50px;
+            opacity: 0.6;
+        }
+
+        .songTitle span {
+            color: @titleNavy;
+            font-weight: 500;
+        }
+    }
+
+    .progressBar {
+        width: 100%;
+        background-color: @grey;
+        height: 2px;
+
+        .elapsed {
+            width: 0;
+            background-color: @fundboxGreen;
+            height: 2px;
+        }
+    }
+
+    .progressTimer {
+        
+        .flex-row;
+        margin-top: 8px;
+
+        span {
+            font-family: sans-serif;
+            opacity: 0.3;
+            font-size: 14px;
+            cursor: default;
+
+            &:nth-child(1) {
+                flex: 1;
             }
         }
     }

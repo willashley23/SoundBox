@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "author": "",
   "license": "ISC",
@@ -23,9 +24,11 @@
     "less": "^2.7.2",
     "less-loader": "^4.0.5",
     "ncp": "^2.0.0",
+    "node-static": "^0.7.9",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "source-map-loader": "^0.2.1",
+    "static-server": "^2.0.5",
     "style-loader": "^0.18.2",
     "webpack": "^3.5.3",
     "webpack-dev-server": "^2.7.1"

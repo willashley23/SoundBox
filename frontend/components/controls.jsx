@@ -19,10 +19,11 @@ export default class Controls extends React.Component {
 
     render() {
         // Destructure props so we don't have to constatly retype 'this.props'
-        const {artist, trackName, playing, playPause, flip, progress, duration} = this.props;
+        const {artist, trackName, playing, playPause, flip, progress, duration, index} = this.props;
         
         let formattedProgress = Utils.formatTime(progress);
         let progressAsPercent = ((progress / duration) * 100).toString() + "%";
+        let name = `${index + 1}. ${trackName}`;
         
         // Create the style object we will use to increase the width of the progress bar.
         let currentAudioProgress = {
@@ -40,7 +41,7 @@ export default class Controls extends React.Component {
 
                     <div className='artistInfo'>
                         <div className='artistName'><span>{artist}</span></div>
-                        <div className='songTitle'><span>{trackName}</span></div>
+                        <div className='songTitle'><span>{name}</span></div>
                     </div>
 
                     <div className='progressBar'>
