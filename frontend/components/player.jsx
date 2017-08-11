@@ -110,8 +110,8 @@ export default class Player extends React.component  {
     render() {
         return(
             <div className="playerContainer">
-                <div className="albumContainer">
-
+                <div className='albumContainer'>
+                    <Album tracks={this.state.tracks} duration={this.state.duration} index={this.state.index}/>
                 </div>
                 <Controls 
                     trackName={this.state.trackName}

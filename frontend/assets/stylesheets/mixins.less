@@ -1,0 +1,68 @@
+@fundboxGreen: #1dbb9b;
+@hoverGreen: #30dcbc;
+@letterGrey: #AFB5B9;
+@titleNavy: #4c5f6f;
+@grey: #e3e5e5;
+
+.icon(@url) {
+    -webkit-mask: url(@url) no-repeat center;
+    mask-image: url(@url) no-repeat center;
+    background-color: @fundboxGreen;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 50px;
+    width: 50px;
+    transition: background-color 350ms ease;
+    cursor: pointer;
+
+    &:hover {
+        background-color: @hoverGreen;
+    }
+}
+
+.flex-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.aspect-ratio(@width, @height) {
+  position: relative;
+  
+  &:before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 18vh;
+    background-image: url('../images/soundcloud.png');
+    background-repeat: no-repeat;
+    background-position: 25px 15px;
+    background-size: 10%;
+    opacity: 0.5;
+    position: absolute;
+  }
+
+  > .content {
+    position: absolute;
+    padding:10px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    span:before {
+      content:"@{width}";
+    }
+    
+    span:after {
+      content:"@{height}";
+    }
+  }
+}

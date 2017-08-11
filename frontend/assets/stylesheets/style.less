@@ -1,0 +1,40 @@
+@import "mixins";
+
+body {
+    background-color: @fundboxGreen;
+}
+
+.playerContainer {
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 7px 7px rgba(0,0,0,0.23);
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.albumContainer {
+    
+    .aspect-ratio(11, 11.5);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 30%;
+    height: 500px;
+    min-width: 500px;
+    margin: auto;
+
+    .albumArtwork {
+        
+        max-height: 500px;
+        position: relative;
+
+        img {
+
+            width: 100%;
+            position: absolute;
+            transition: opacity 600ms ease;
+
+            &.hidden {
+                opacity: 0;
+            }
+        }
+    }
+}

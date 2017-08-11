@@ -6,6 +6,18 @@ export default class Album extends React.Component {
         super(props);
     }
 
+    shouldComponentUpdate() {
+        let bool = this.props.duration === this.duration || !this.props.tracks ? false : true;
+        this.duration = this.props.duration !== this.duration ? this.props.duration : this.duration;
+        return bool;
+    }
+
+    componentDidMount() {
+        if (!this.duration) {
+            this.duration = this.props.duration;
+        }
+    }
+
     render() {
         let artwork;
         if (this.props.tracks) {
@@ -14,6 +26,7 @@ export default class Album extends React.Component {
             }).reverse();
         }
 
+        // Insert the images into the dom, stacking them on top of each other for faster client side rendering.
         return(
             <div className="albumArtwork">
                 {artwork}
