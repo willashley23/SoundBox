@@ -1,5 +1,6 @@
 import React from 'react';
-
+import Controls from './controls';
+import Album from './album';
 
 export default class Player extends React.component  {
 
@@ -16,6 +17,13 @@ export default class Player extends React.component  {
             progress: 0,
             duration: 0,
         };
+
+        // Common practice in React. Bind 'this' to all instance methods of the class so we can propogate them to the child components.
+        this.playPause = this.playPause.bind(this);
+        this.updateProgress = this.updateProgress.bind(this);
+        this.bindListeners = this.bindListeners.bind(this);
+        this.setDuration = this.setDuration.bind(this);
+        this.flip = this.flip.bind(this);
     }
 
 
@@ -73,11 +81,39 @@ export default class Player extends React.component  {
         this.state.currentTrack.addEventListener('ended', () => {
             this.next();
         });
+    }
+
+    playPause() {
+        if (!this.state.playing) {
+            this.state.currentTrack.play();
+            this.setState({playing: true});
+        }
+        else {
+            this.setState({playing: false});
+            this.state.currentTrack.pause();
+        }
+    }
+
+    flip(direction) {
+        let tracks = this.state.tracks;
+        let currentIndex = this.state.index;
+
+        this.state.currentTrack.src = tracks[`${currentIndex + direction}`].url;
+        this.setState({
+            playing: true,
+            index: currentIndex + direction,
+            trackName: tracks[`${currentIndex + direction}`].name,
+            albumArt: tracks[`${currentIndex + direction}`].cover_image,
+        }, () => {this.state.currentTrack.play()});
     }   
 
     render() {
         return(
+            <div className="playerContainer">
+                <div className="albumContainer">
 
+                </div>
+            </div>
         );
     }
 }
