@@ -103,12 +103,14 @@ export default class Player extends React.Component  {
             let tracks = this.state.tracks;
             let currentIndex = this.state.index;
 
-            this.state.currentTrack.src = tracks[`${currentIndex + direction}`].url;
+            let currentTrack = this.state.currentTrack;
+            currentTrack.src = tracks[`${currentIndex + direction}`].url;
             this.setState({
                 playing: true,
                 index: currentIndex + direction,
                 trackName: tracks[`${currentIndex + direction}`].name,
                 albumArt: tracks[`${currentIndex + direction}`].cover_image,
+                currentTrack,
             }, () => {this.state.currentTrack.play()});
         
     }   
