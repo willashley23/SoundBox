@@ -21,15 +21,15 @@ Considering this app has minimal state, I felt that a state container such as Re
 
 ### Components
 
-I broke this player down into three main components:
+After refactoring the state, player has been broken down into four components:
 
-The `Player`, which handles the state of the app and distributes it to its children. It creates an audio object via `new Audio(url)` and uses its instance methods such as `currentTime`, `duration`, `stop`, `play`, as well as its event listeners. 
+`Player`: handles the state of the app and distributes it to its children. It fetches an array of tracks from the API and holds the tracks, current title, song number, track URL, and current album artwork. When the user `flip` to the next song, it updates all these props and passes them to the children via re-render. `flip` is the only event control-like event this component holds because it causes a cascading effect wherby the entire app state changes.
 
-The `Controls`, which recieve instance methods from the Player to call when the user interacts with them and update the UI as necessary.
+`Controls`: acts as the main interface between the audio and the user. Receives the current URL of a track to play, and creates an audio object via `new Audio(url)` and uses its instance methods such as `currentTime`, `duration`, `stop`, `play`. It holds a child component, `ProgressBar`. 
 
-And last, the `Album`, which stores all the album artowrk. I broke this component out of the player to avoid unecessary re-renders of images, though some are still unavoidable.
+`ProgressBar`: holds the progress bar as well as the current time and total time of the clip. It is necessary to make this its own component because it will use the `currentTrack` object's event listener, `timechange`, to update its internal state each second, which will trigger a rerender. Since this is a lot of re-rendering, we want it to be contained to the smallest component possible, lest we re-render the entire app each second. 
 
-This is by no means the best way to approach this. There are plenty of other component hierarchies that would work fine. I personally think it would be interesting to make the progress bar its own component, since it updates the most. 
+`Album`: stores all the album artowrk. Sticks all the album artwork images into the DOM as `img` tags, where they will be absolutely positioned so as to sit on top on each other. Then, when we advance to the next track, the top most image tag transitons it's opacity via CSS, to give the illusion of a cross-blur to the image sitting below. Behind the scenes, the component is re-rendering and placing a special CSS class on tracks not playing to create this effect.
 
 ### The API
 We can simply use `fetch` to hit the API, and `async` to await for the response and store it in the state. Since the payload of the API is small, we can store it all in the state, but in a production app, it would be wiser to only fetch the frist `n` tracks, store them in the state, and then fetch more tracks when the user is `n` tracks away from the end. 

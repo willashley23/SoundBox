@@ -45,7 +45,7 @@ export default class ProgressBar extends React.Component {
         });
 
         currentTrack.addEventListener('ended', () => {
-            this.next();
+            this.props.flip(1);
         });
     }
 

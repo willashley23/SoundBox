@@ -58,6 +58,7 @@ export default class Controls extends React.Component {
         let name = `${index + 1}. ${trackName}`;
         
         return(
+            
             <div className='controlsContainer'>
                 <div className='playerControls'>
                     <div className="previous" onClick={ () => { flip(-1) }} />
@@ -72,9 +73,7 @@ export default class Controls extends React.Component {
                     </div>
 
                     <div className='progressBar'>
-                    
-                        <ProgressBar currentTrack={this.state.currentTrack}/>
-
+                        <ProgressBar currentTrack={this.state.currentTrack} flip={flip}/>
                     </div>
 
                 </div>
