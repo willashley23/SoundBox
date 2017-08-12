@@ -74,6 +74,7 @@ export default class Player extends React.Component  {
                 playing: true,
                 index: currentIndex + direction,
                 trackName: tracks[`${currentIndex + direction}`].name,
+                trackUrl: this.state.tracks[currentIndex + direction].url,
                 albumArt: tracks[`${currentIndex + direction}`].cover_image,
             });
         
@@ -81,6 +82,7 @@ export default class Player extends React.Component  {
  
 
     render() {
+        
         if (this.state.tracks.length) {
             return(
                 <div className="playerContainer">
@@ -95,6 +97,7 @@ export default class Player extends React.Component  {
                         progress={this.state.progress}
                         index={this.state.index}
                         playing={this.state.playing}
+                        flip={this.flip}
                     />
                 </div>
             );
