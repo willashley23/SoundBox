@@ -9,21 +9,23 @@ export default class Controls extends React.Component {
         this.state = {
             currentTrack: new Audio(`${props.trackUrl}`),
         }
-        
+
         this.playPause = this.playPause.bind(this);
     }
 
     componentDidMount() {
+
         this.setState({
             playing: true,
         }, () => {
             this.state.currentTrack.play() 
         });
+        
     }
 
-    componentWillUpdate() {
-        
-        if(this.props.trackUrl) {
+    componentWillReceiveProps(nextProps) {
+
+        if(nextProps.trackUrl !== this.state.currentTrack.src ) {
             
             let currentTrack = this.state.currentTrack;
             currentTrack.src = this.props.trackUrl;

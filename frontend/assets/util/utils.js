@@ -11,6 +11,7 @@ const utils = {
 
         return minutes + ":" + seconds;
     }
+    
 };
 
 export default utils;

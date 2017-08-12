@@ -66,23 +66,23 @@ export default class Player extends React.Component  {
             direction === 1 && this.state.index === this.state.tracks.length - 1) return;
             
             let tracks = this.state.tracks;
-            let currentIndex = this.state.index;
+            let currentIndex = this.state.index + direction;
 
             // let currentTrack = this.state.currentTrack;
             // currentTrack.src = tracks[`${currentIndex + direction}`].url;
             this.setState({
                 playing: true,
-                index: currentIndex + direction,
-                trackName: tracks[`${currentIndex + direction}`].name,
-                trackUrl: this.state.tracks[currentIndex + direction].url,
-                albumArt: tracks[`${currentIndex + direction}`].cover_image,
+                index: currentIndex,
+                trackName: tracks[`${currentIndex}`].name,
+                trackUrl: this.state.tracks[currentIndex].url,
+                albumArt: tracks[`${currentIndex}`].cover_image,
             });
         
     }  
  
 
     render() {
-        
+
         if (this.state.tracks.length) {
             return(
                 <div className="playerContainer">
