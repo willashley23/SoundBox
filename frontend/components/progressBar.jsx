@@ -1,7 +1,6 @@
 import React from 'react';
 import Utils from '../assets/util/utils';
 
-
 export default class ProgressBar extends React.Component {
 
     constructor(props) {

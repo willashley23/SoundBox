@@ -4,6 +4,7 @@ import ProgressBar from './progressBar';
 export default class Controls extends React.Component {
     
     constructor(props) {
+        
         super(props);
  
         this.state = {
@@ -20,23 +21,25 @@ export default class Controls extends React.Component {
         }, () => {
             this.state.currentTrack.play() 
         });
-        
+
     }
 
     componentWillReceiveProps(nextProps) {
-
+        
         if(nextProps.trackUrl !== this.state.currentTrack.src ) {
             
             let currentTrack = this.state.currentTrack;
-            currentTrack.src = this.props.trackUrl;
+            currentTrack.src = nextProps.trackUrl;
             
             this.setState({
                 currentTrack,
+                playing: true,
             }, () => {this.state.currentTrack.play()});
         }
     }
 
     playPause() {
+        
         if (!this.state.playing) {
             this.state.currentTrack.play();
             this.setState({playing: true});
@@ -49,6 +52,7 @@ export default class Controls extends React.Component {
 
     render() {
         
+        // Destructure props so we don't need to constantly type 'this.props'
         const {index, trackName, flip, artist} = this.props;
         
         let name = `${index + 1}. ${trackName}`;

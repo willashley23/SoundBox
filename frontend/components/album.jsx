@@ -4,22 +4,10 @@ export default class Album extends React.Component {
 
     constructor(props) {
         super(props);
-        this.duration;
-    }
-
-    shouldComponentUpdate() {
-        let bool = this.props.duration === this.duration || !this.props.tracks ? false : true;
-        this.duration = this.props.duration !== this.duration ? this.props.duration : this.duration;
-        return bool;
-    }
-
-    componentDidMount() {
-        if (!this.duration) {
-            this.duration = this.props.duration;
-        }
     }
 
     render() {
+        
         let artwork;
         if (this.props.tracks) {
             artwork = this.props.tracks.map( (track, idx) => {
